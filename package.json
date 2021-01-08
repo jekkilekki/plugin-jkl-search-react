@@ -1,0 +1,35 @@
+{
+	"name": "jkl-search-react",
+	"version": "1.0.0",
+	"description": "Powering WordPress Search with React and the REST API",
+	"main": "assets/js/public.js",
+	"scripts": {
+		"build": "webpack",
+		"watch": "webpack -w",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Aaron Snowberger",
+	"license": "MIT",
+	"dependencies": {
+		"@bit/joshk.react-spinners-css.dual-ring": "^1.2.1",
+		"@bit/joshk.react-spinners-css.ripple": "^1.2.1",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"react-spinners": "^0.10.4",
+		"react-spinners-css": "^1.2.2",
+		"styled-components": "^5.2.1"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"css-loader": "^5.0.1",
+		"html-react-parser": "^1.1.1",
+		"style-loader": "^2.0.0",
+		"uglifyjs-webpack-plugin": "^2.2.0",
+		"url-loader": "^4.1.1",
+		"webpack": "^4.44.2",
+		"webpack-cli": "^3.3.12"
+	}
+}
