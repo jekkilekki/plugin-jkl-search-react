@@ -33,7 +33,7 @@ export default class SearchResults extends React.Component {
 		
 		// No results found.
 		else if ( this.props.searched ) {
-			results = <p>Nothing Found</p>;
+			results = <p>Nothing Found for { this.props.query }. Press 'ENTER' for an Advanced Search.</p>;
 		} 
 		
 		// Default - reset.
@@ -42,7 +42,9 @@ export default class SearchResults extends React.Component {
 		}
 
 		return (
-			<div className="search-results">{results}</div>
+			<div className="search-results">
+				{results}
+			</div>
 		)
 	}
 }

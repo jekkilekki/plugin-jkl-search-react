@@ -9,6 +9,7 @@ export default class SearchForm extends React.Component {
 		this.getResults = this.getResults.bind(this);
 		this.resetResults = this.resetResults.bind(this);
 		this.filterResults = this.filterResults.bind(this);
+		this.loadMore = this.loadMore.bind(this);
 		this.state = {
 			query: '', // Input query
 			results: [], // Results from search
@@ -27,10 +28,12 @@ export default class SearchForm extends React.Component {
 
 	submitSearch(e) {
 		e.preventDefault();
-		window.location.href = '?s=' + this.state.query;
-		let overlay = document.getElementsByClassName('site-search-overlay');
-		console.log( overlay.classList );
-		overlay.classList.remove('active');
+		location.assign( location.origin + '?s=' + this.state.query );
+	}
+
+	loadMore(e) {
+		e.preventDefault();
+		location.assign( location.origin + '/page/2/?s=' + this.state.query );
 	}
 
 	getResults(e) {
@@ -38,7 +41,9 @@ export default class SearchForm extends React.Component {
 		const search = e.target.value;
 		this.setState({ query: search });
 
+		// If we push Enter, then go to the Search results page.
 		if ( e.key === 'Enter' ) {
+			this.submitSearch(e);
 			return;
 		}
 
@@ -114,11 +119,20 @@ export default class SearchForm extends React.Component {
 				} */}
 
 				<SearchResults
+					query={this.state.query}
 					searched={this.state.searched}
 					loading={this.state.loading}
 					results={this.state.results}
 					container={this.state.containerId}
 				/>
+				{this.state.searched && ! this.state.loading && this.state.results.length > 10 &&
+					<button
+						className="btn alt"
+						onClick={this.loadMore}
+					>
+						Load More
+					</button>
+				}
 			</form>
 		)
 	}
